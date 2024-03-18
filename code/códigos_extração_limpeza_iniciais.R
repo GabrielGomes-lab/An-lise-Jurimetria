@@ -142,9 +142,12 @@ processosedespecial2 <- processosedespecial2 %>%
   distinct(., .keep_all = T)
 
 # Juntamos as bases de primeira e segunda instância
-base_final2 <- processosedespecial %>%
+base_final <- processosedespecial %>%
   full_join(processosedespecial2, by = "processo")
 
 # Verificamos a existência de duplicados
 which(duplicated(base_final))
 
+# salvamos o arquivo em json
+
+write_json("sei camminho/dados.json",base_final)
